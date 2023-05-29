@@ -1,0 +1,5 @@
+bool sequence_active
+---
+bool sequence_finished
+---
+duration time_elapsed
