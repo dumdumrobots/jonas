@@ -1,0 +1,4 @@
+<launch>
+    <node name="sequence_planner" pkg="jonas" type="sequence_planner.py" output="screen"  />
+    <node name="interface_pc" pkg="interface_pc" type="test.py"/>
+</launch>

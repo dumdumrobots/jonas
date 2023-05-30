@@ -1,0 +1,6 @@
+<launch>
+    <node name="motor_movement" pkg="jonas" type="motor_movement.py" output="screen"  />
+    <node name="wheels" pkg="wheels_motor" type="jonas_control"/>
+
+    <node name="interface_rpi" pkg="interface_rpi" type="node_interface.py"/>
+</launch>
