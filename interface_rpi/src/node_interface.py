@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 home = expanduser("~")
 
-main_path = home + '/jonas_ws/src/jonas_hybridrobot/interface_rpi/src/faces/'
+main_path = home + '/jonas_ws/src/interface_rpi/src/faces/'
 
 
 blink_count = 5
@@ -61,7 +61,7 @@ class App(QtWidgets.QWidget):
         timer = QtCore.QTimer(self)
         timer.timeout.connect(self.update_image)
         timer.start(100)
-        # self.showFullScreen()
+        self.showFullScreen()
         self.update_image()
         
 
