@@ -1,4 +1,4 @@
-# Jonas the Robot
+# Jonas the Robot 🤖
 Jonas is a hybrid robot developed by the Mechatronics and Robotics Laboratory at UTEC for research and display purposes. 
 
 Our friendly robot could not be possible without the work and support of the following:
