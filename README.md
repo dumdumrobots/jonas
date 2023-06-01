@@ -55,9 +55,9 @@ Run this command in Jonas.\
 
 ### Remote Control
 
-To control the movement of Jonas, the team developed a UI with all the basic functionalities of Jonas. Here is a screenshot of it. 
+To control the movement of Jonas, the team developed a UI with all the basic functionalities of Jonas. Here is a screenshot of it.
 
-<img src="https://github.com/dumdumrobots/jonas/assets/77807539/c73df4a1-feee-4b7c-9d32-911ad46a58f6" width="500" height="350">
+<img src="https://github.com/dumdumrobots/jonas/assets/77807539/c73df4a1-feee-4b7c-9d32-911ad46a58f6" width="500" height="350"> <br />
 
 The arms sequences are controlled by the buttons on the right side. There are a total of five sequences: 
 
