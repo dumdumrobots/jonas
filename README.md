@@ -7,9 +7,11 @@ Jonas is a hybrid robot developed by the Mechatronics and Robotics Laboratory at
 
 ## Environment and Dependencies
 
-Jonas has a Raspberry Pi 3 B+ with Ubuntu MATE 18.04 as a main computer, with ROS Melodic installed. It depends on the [Dynamixel SDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and PyQt5. However, both dependencies can also be used in a newer version of ROS. Also, to control Jonas remotely, it's important to have a computer with Ubuntu 18.04 with ROS Melodic installed. 
+Jonas has a Raspberry Pi 3 B+ with Ubuntu MATE 18.04 as a main computer, with ROS Melodic installed. It depends on the [Dynamixel SDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and PyQt5. However, both dependencies can also be used in a newer version of ROS. Also, to control Jonas remotely, it's important to have a computer with Ubuntu 18.04 with [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) installed. 
 
 ## Setting Up Jonas
+
+Before working with Jonas, it's important to set it up following the next sections related to power, network settings and bring up launch files. 
 
 ### Power
 
@@ -17,18 +19,35 @@ Jonas has two power supplies:
 - A 5V USB power bank connected to the RPI. 
 - A 11.1V LiPO battery connected to the actuators.
 
-Both batteries need to be correctly charged before using Jonas. 
+Both batteries need to be fully charged and connected before using Jonas. Also, it has two switches on the base for controlling the supply of both arms (left switch) and mobile base motors (right switch). We recommend to turn the switches moments before running the launch files to save energy. 
+
+### Network
+
+The ROS TCP/IP communication settings are easy to set up; however, they should be done with attention to detail as any misplaced number could throw undesired errors. Here they are the necessary steps: 
+
+1. Retrieve the IPs corresponding to Jonas and the remote PC by using the `ifconfig` command line. For convenience purposes, from now on we are using the substitutes `<JONAS_IP>` and `<REMOTE_PC_IP>`. 
+> ⚠️ An IP address in a local network should have the form of 192.168.0.10X, where X is a number between 0 and 9. Any other IP address form, such as a NAT address, can't be used in ROS. 
+3. Open the `.bashrc` script with the text editor of your preference in the default terminal directory and add the following text lines on the bottom:
+
+`.bashrc` inside Remote PC \
+`export ROS_MASTER_URI=http:/<REMOTE_PC_IP>:11311
+export ROS_HOSTNAME=<REMOTE_PC_IP>`
+
+`bashrc` inside Jonas\
+`export ROS_MASTER_URI=http:/<REMOTE_PC>:11311
+export ROS_HOSTNAME=<JONASC_IP>`
+
 
 ### Bring Up
 Jonas needs to be booted up using the following command lines:
 
-On remote PC \
+Remote PC inside Terminal \
 `roslaunch jonas remote_pc.launch`
 
-On Jonas \
+Jonas inside Terminal\
 `roslaunch jonas jonas.launch`
 
-⚠️ *SSH cannot be used due to the graphic interface library. We are currently finding a way to bring up all files of Jonas by powering it on.*
+> ⚠️ *SSH cannot be used due to the graphic interface library. We are currently finding a way to bring up all files of Jonas by powering it on.*
 
 ### Remote Control
 
