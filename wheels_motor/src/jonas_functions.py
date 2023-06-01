@@ -14,10 +14,10 @@ r = 0.1524 #Radio de las ruedas
 vw_max = 8.5
 
 #Iniciar comunicación serial con los arduinos
-# arduino1 = serial.Serial('/dev/ttyUSB0',9600)
-# arduino2 = serial.Serial('/dev/ttyUSB1',9600)
-# arduino3 = serial.Serial('/dev/ttyUSB2',9600) 
-# time.sleep(2)
+arduino1 = serial.Serial('/dev/ttyUSB0',9600)
+arduino2 = serial.Serial('/dev/ttyUSB1',9600)
+arduino3 = serial.Serial('/dev/ttyUSB2',9600) 
+time.sleep(2)
 
 #Limitar velocidad de las ruedas	
 def lim_wheels_speed(wheels_des_speed):
@@ -66,11 +66,10 @@ def send_vel_robot(vx,vy,w):
 	vel_wheels = ikine(vel_robot)
 	vel_wheels = lim_wheels_speed(vel_wheels)
 	vel_wheels = np.round(vel_wheels,4)
-	#print(vel_wheels)
 	
-	# arduino1.write(str(vel_wheels[0]).encode())
-	# arduino2.write(str(vel_wheels[1]).encode())
-	# arduino3.write(str(vel_wheels[2]).encode())
+	arduino1.write(str(vel_wheels[0]).encode())
+	arduino2.write(str(vel_wheels[1]).encode())
+	arduino3.write(str(vel_wheels[2]).encode())
 	
 #Velocidades maximas del robot
 vx_max = fkine(np.array([-vw_max,vw_max,0]))[0] #m/s            [-w   w     0]
