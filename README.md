@@ -57,7 +57,7 @@ Run this command in Jonas.\
 
 To control the movement of Jonas, the team developed a UI with all the basic functionalities of Jonas. Here is a screenshot of it. 
 
-<img src="https://github.com/dumdumrobots/jonas/assets/77807539/c73df4a1-feee-4b7c-9d32-911ad46a58f6" width="700" height="500">
+<img src="https://github.com/dumdumrobots/jonas/assets/77807539/c73df4a1-feee-4b7c-9d32-911ad46a58f6" width="500" height="350">
 
 The arms sequences are controlled by the buttons on the right side. There are a total of five sequences: Salute, Curl, Hug, Dance, and Serve. On the other hand, the mobile base is controlled by the remaining buttons. By pressing them, Jonas will follow that direction. The velocity of Jonas is controlled by the top-left slider, and its numeric value is displayed next to the `START` button. 
 
