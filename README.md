@@ -26,10 +26,11 @@ Both batteries need to be fully charged and connected before using Jonas. Also, 
 
 ### Network
 
-The ROS TCP/IP communication settings are easy to set up; however, they should be done with attention to detail as any misplaced number could throw undesired errors. Here they are the necessary steps: 
+The ROS TCP/IP communication settings are easy to set up; however, they should be done with attention to detail as any misplaced number could throw undesired errors. Here are the necessary steps: 
 
 1. Retrieve the IPs corresponding to Jonas and the remote PC by using the `ifconfig` command line. For convenience purposes, from now on we are using the substitutes `<JONAS_IP>` and `<REMOTE_PC_IP>`. 
-> ⚠️ An IP address in a local network should have the form of 192.168.0.10X, where X is a number between 0 and 9. Any other IP address form, such as a NAT address, can't be used in ROS. 
+> ⚠️ NAT addresses or similar cannot be used in ROS, as it requires the network to have bi-directional connectivity and a name that every machine can resolve. In other words, Jonas can only be used if it is connected to mobile hotspots, local routers, or similar.  
+
 3. Open the `.bashrc` script with the text editor of your preference in the default terminal directory and add the following text lines on the bottom:
 
 Add this line to `.bashrc` inside Remote PC. \
