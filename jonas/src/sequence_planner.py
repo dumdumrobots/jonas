@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # --- Import libraries
 
@@ -8,7 +8,7 @@ import numpy as np
 import time
 import actionlib
 
-from std_msgs.msg import Int16MultiArray, Bool, String
+from std_msgs.msg import Int32MultiArray, Bool, String
 
 from jonas.srv import sequence, sequenceResponse
 
@@ -27,14 +27,14 @@ class Planner(object):
 
     action_active = False
 
-    msg = Int16MultiArray()
+    msg = Int32MultiArray()
 
 
     def __init__(self):
 
         # ------------------------------------- Create publisher
 
-        self.jointPublisher = rospy.Publisher("joint_value",Int16MultiArray, queue_size=10)
+        self.jointPublisher = rospy.Publisher("joint_value",Int32MultiArray, queue_size=10)
         
         rospy.sleep(0.005)
 
@@ -68,7 +68,10 @@ class Planner(object):
         self.msg.data = joint_values.tolist()
         self.jointPublisher.publish(self.msg)
 
+
+        rospy.loginfo("Waiting for service activation. \n")
         rospy.wait_for_service("sequence_service")
+        rospy.loginfo("Connection established. \n")
 
         self.client = rospy.ServiceProxy("sequence_service", sequence)
         self.service = self.client(self.sequence_active)
@@ -78,7 +81,7 @@ def main():
 
     rospy.init_node("planner_node")
 
-    print("Jonas sequence planner active.\n")
+    print("\nJonas sequence planner active.\n")
 
     freq = 10
     rate = rospy.Rate(freq)
@@ -146,35 +149,37 @@ def main():
 
             try: 
                 order = sequences[request]
-                #print("Sent activation for " + request + " sequence.\n")
+                print("Sent activation for " + request + " sequence.\n")
 
                 for i in order:
 
                     while planner.motors_moving == True:
                         pass
+                    
+                    array = poses[i]/0.088
 
-                    planner.SequenceClient(poses[i]/0.088)
+                    planner.SequenceClient(array.astype(int))
                     
                     rospy.sleep(0.5)
 
             except KeyError:
 
                 try:
-                    planner.SequenceClient(poses[request]/0.088)
-                    #print("Sent activation for " + request + " pose.\n")
+
+                    array = poses[i]/0.088
+
+                    planner.SequenceClient(array.astype(int))
+                    print("Sent activation for " + request + " pose.\n")
+                    
                     rospy.sleep(0.5)
 
                 except KeyError:
                     pass
-                    #print("Neither pose nor sequence exists with name " + request + ", try again.\n")
+                    
+                    print("Neither pose nor sequence exists with name " + request + ", try again.\n")
 
             
             planner.action_active = False
-
-
-                
-                
-
 
         rate.sleep()
 
