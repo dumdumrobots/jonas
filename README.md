@@ -8,7 +8,7 @@ Jonas is a hybrid robot developed by the Mechatronics and Robotics Laboratory at
 
 ## Environment and Dependencies
 
-Jonas has a Raspberry Pi 3 B+ with Ubuntu MATE 18.04 as a main computer, with ROS Melodic installed. It depends on the [Dynamixel SDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and PyQt5. However, both dependencies can also be used in a newer version of ROS. Also, to control Jonas remotely, it's important to have a computer with Ubuntu 18.04 or 20.04 with [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) or [ROS Noetic](http://wiki.ros.org/melodic/Installation/Ubuntu)installed. 
+Jonas has a Raspberry Pi 3 B+ with Ubuntu MATE 18.04 as a main computer, with ROS Melodic installed. It depends on the [Dynamixel SDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and PyQt5. However, both dependencies can also be used in a newer version of ROS. Also, to control Jonas remotely, it's important to have a computer with Ubuntu 18.04 or 20.04 with [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) or [ROS Noetic](http://wiki.ros.org/melodic/Installation/Ubuntu) installed. 
 
 
 ## Setting Up Jonas
